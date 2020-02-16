@@ -1,6 +1,7 @@
 # Edge-Pay
 A mobile payment solution
-=== WooCommerce Offline Gateway ===
+
+=== WooCommerce Mobile Payment Gateway ===
 
 Contributors: skyverge, beka.rice
 Tags: woocommerce, payment gateway, gateway, manual payment
