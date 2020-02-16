@@ -4,15 +4,24 @@ A mobile payment solution
 === WooCommerce Mobile Payment Gateway ===
 
 Contributors: skyverge, beka.rice
+
 Tags: woocommerce, payment gateway, gateway, manual payment
 Donate link
+
 Requires at least: 3.8
+
 Tested up to: 4.3
+
 Requires WooCommerce at least: 2.1
+
 Tested WooCommerce up to: 2.4
+
 Stable Tag: 1.0.1
+
 License: GPLv3
+
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
+
 Automatically generate WooCommerce product SKUs from the product slug and/or variation attributes.
 
 == Description ==
