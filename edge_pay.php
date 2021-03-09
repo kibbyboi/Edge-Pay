@@ -1,5 +1,5 @@
 /*
-Plugin Name: Authorize.net AIM - Edge Pay WooCommerce Payment Gateway
+Plugin Name:Edge Pay WooCommerce Payment Gateway
 Plugin URI: http://www.edgestores.com/edge-pay
 Description: WooCommerce custom payment gateway integration on edgestore.
 Version: 1.0
