@@ -1,7 +1,7 @@
 /*
 Plugin Name:Edge Pay WooCommerce Payment Gateway
 Plugin URI: http://www.edgestores.com/edge-pay
-Description: WooCommerce custom payment gateway integration on edgestore.
+Description: This Edge Store WooCommerce custom payment gateway integration for edgestore.com
 Version: 1.0
 */
 
