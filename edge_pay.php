@@ -1,43 +1,43 @@
 /*
-Plugin Name: Authorize.net AIM - ES Pay WooCommerce Payment Gateway
-Plugin URI: http://www.edgestores.com/es-pay
+Plugin Name: Authorize.net AIM - Edge Pay WooCommerce Payment Gateway
+Plugin URI: http://www.edgestores.com/edge-pay
 Description: WooCommerce custom payment gateway integration on edgestore.
 Version: 1.0
 */
 
 
-add_action( 'plugins_loaded', 'cwoa_authorizenet_aim_init', 0 );
-function cwoa_authorizenet_aim_init() {
+add_action( 'plugins_loaded', 'edge_pay-authorizenet-aim_init', 0 );
+function edge_pay-authorizenet-aim_init() {
     //if condition use to do nothin while WooCommerce is not installed
   if ( ! class_exists( 'WC_Payment_Gateway' ) ) return;
-  include_once( 'cloudways-authorize-woocommerce.php' );
+  include_once( 'edge_pay.php' );
   // class add it too WooCommerce
-  add_filter( 'woocommerce_payment_gateways', 'cwoa_add_authorizenet_aim_gateway' );
-  function cwoa_add_authorizenet_aim_gateway( $methods ) {
-    $methods[] = 'cwoa_AuthorizeNet_AIM';
+  add_filter( 'woocommerce_payment_gateways', 'edge_pay_add_authorizenet_aim_gateway' );
+  function edge_pay_add_authorizenet_aim_gateway( $methods ) {
+    $methods[] = 'edge_pay_AuthorizeNet_AIM';
     return $methods;
   }
 }
 // Add custom action links
-add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'cwoa_authorizenet_aim_action_links' );
-function cwoa_authorizenet_aim_action_links( $links ) {
+add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'edge_pay_authorizenet_aim_action_links' );
+function edge_pay_authorizenet_aim_action_links( $links ) {
   $plugin_links = array(
-    '<a href="' . admin_url( 'admin.php?page=wc-settings&tab=checkout' ) . '">' . __( 'Settings', 'cwoa-authorizenet-aim' ) . '</a>',
+    '<a href="' . admin_url( 'admin.php?page=wc-settings&tab=checkout' ) . '">' . __( 'Settings', 'edge_pay-authorizenet-aim' ) . '</a>',
   );
   return array_merge( $plugin_links, $links );
 }
 
 <?php
-class cwoa_AuthorizeNet_AIM extends WC_Payment_Gateway {
+class edge_pay_AuthorizeNet_AIM extends WC_Payment_Gateway {
   function __construct() {
     // global ID
-    $this->id = "cwoa_authorizenet_aim";
+    $this->id = "edge_pay_authorizenet_aim";
     // Show Title
-    $this->method_title = __( "Authorize.net AIM", 'cwoa-authorizenet-aim' );
+    $this->method_title = __( "Authorize.net AIM", 'edge_pay-authorizenet-aim' );
     // Show Description
-    $this->method_description = __( "Authorize.net AIM Payment Gateway Plug-in for WooCommerce", 'cwoa-authorizenet-aim' );
+    $this->method_description = __( "Authorize.net AIM Payment Gateway Plug-in for WooCommerce", 'edge_pay-authorizenet-aim' );
     // vertical tab title
-    $this->title = __( "Authorize.net AIM", 'cwoa-authorizenet-aim' );
+    $this->title = __( "Authorize.net AIM", 'edge_pay-authorizenet-aim' );
     $this->icon = null;
     $this->has_fields = true;
     // support default form with credit card
@@ -64,39 +64,39 @@ class cwoa_AuthorizeNet_AIM extends WC_Payment_Gateway {
   public function init_form_fields() {
     $this->form_fields = array(
       'enabled' => array(
-        'title'    => __( 'Enable / Disable', 'cwoa-authorizenet-aim' ),
-        'label'    => __( 'Enable this payment gateway', 'cwoa-authorizenet-aim' ),
+        'title'    => __( 'Enable / Disable', 'edge_pay-authorizenet-aim' ),
+        'label'    => __( 'Enable this payment gateway', 'edge_pay-authorizenet-aim' ),
         'type'    => 'checkbox',
         'default'  => 'no',
       ),
       'title' => array(
-        'title'    => __( 'Title', 'cwoa-authorizenet-aim' ),
+        'title'    => __( 'Title', 'edge_pay-authorizenet-aim' ),
         'type'    => 'text',
-        'desc_tip'  => __( 'Payment title of checkout process.', 'cwoa-authorizenet-aim' ),
-        'default'  => __( 'Credit card', 'cwoa-authorizenet-aim' ),
+        'desc_tip'  => __( 'Payment title of checkout process.', 'edge_pay-authorizenet-aim' ),
+        'default'  => __( 'Credit card', 'edge_pay-authorizenet-aim' ),
       ),
       'description' => array(
-        'title'    => __( 'Description', 'cwoa-authorizenet-aim' ),
+        'title'    => __( 'Description', 'edge_pay-authorizenet-aim' ),
         'type'    => 'textarea',
-        'desc_tip'  => __( 'Payment title of checkout process.', 'cwoa-authorizenet-aim' ),
-        'default'  => __( 'Successfully payment through credit card.', 'cwoa-authorizenet-aim' ),
+        'desc_tip'  => __( 'Payment title of checkout process.', 'edge_pay-authorizenet-aim' ),
+        'default'  => __( 'Successfully payment through credit card.', 'edge_pay-authorizenet-aim' ),
         'css'    => 'max-width:450px;'
       ),
       'api_login' => array(
-        'title'    => __( 'Authorize.net API Login', 'cwoa-authorizenet-aim' ),
+        'title'    => __( 'Authorize.net API Login', 'edge_pay-authorizenet-aim' ),
         'type'    => 'text',
-        'desc_tip'  => __( 'This is the API Login provided by Authorize.net when you signed up for an account.', 'cwoa-authorizenet-aim' ),
+        'desc_tip'  => __( 'This is the API Login provided by Authorize.net when you signed up for an account.', 'edge_pay-authorizenet-aim' ),
       ),
       'trans_key' => array(
-        'title'    => __( 'Authorize.net Transaction Key', 'cwoa-authorizenet-aim' ),
+        'title'    => __( 'Authorize.net Transaction Key', 'edge_pay-authorizenet-aim' ),
         'type'    => 'password',
-        'desc_tip'  => __( 'This is the Transaction Key provided by Authorize.net when you signed up for an account.', 'cwoa-authorizenet-aim' ),
+        'desc_tip'  => __( 'This is the Transaction Key provided by Authorize.net when you signed up for an account.', 'edge_pay-authorizenet-aim' ),
       ),
       'environment' => array(
-        'title'    => __( 'Authorize.net Test Mode', 'cwoa-authorizenet-aim' ),
-        'label'    => __( 'Enable Test Mode', 'cwoa-authorizenet-aim' ),
+        'title'    => __( 'Authorize.net Test Mode', 'edge_pay-authorizenet-aim' ),
+        'label'    => __( 'Enable Test Mode', 'edge_pay-authorizenet-aim' ),
         'type'    => 'checkbox',
-        'description' => __( 'This is the test mode of gateway.', 'cwoa-authorizenet-aim' ),
+        'description' => __( 'This is the test mode of gateway.', 'edge_pay-authorizenet-aim' ),
         'default'  => 'no',
       )
     );    
@@ -124,9 +124,9 @@ class cwoa_AuthorizeNet_AIM extends WC_Payment_Gateway {
       "x_amount"               => $customer_order->order_total,
       
       // Credit Card Information
-      "x_card_num"             => str_replace( array(' ', '-' ), '', $_POST['cwoa_authorizenet_aim-card-number'] ),
-      "x_card_code"            => ( isset( $_POST['cwoa_authorizenet_aim-card-cvc'] ) ) ? $_POST['cwoa_authorizenet_aim-card-cvc'] : '',
-      "x_exp_date"             => str_replace( array( '/', ' '), '', $_POST['cwoa_authorizenet_aim-card-expiry'] ),
+      "x_card_num"             => str_replace( array(' ', '-' ), '', $_POST['edge_pay_authorizenet_aim-card-number'] ),
+      "x_card_code"            => ( isset( $_POST['edge_pay_authorizenet_aim-card-cvc'] ) ) ? $_POST['edge_pay_authorizenet_aim-card-cvc'] : '',
+      "x_exp_date"             => str_replace( array( '/', ' '), '', $_POST['edge_pay_authorizenet_aim-card-expiry'] ),
       
       "x_type"                 => 'AUTH_CAPTURE',
       "x_invoice_num"          => str_replace( "#", "", $customer_order->get_order_number() ),
@@ -172,9 +172,9 @@ class cwoa_AuthorizeNet_AIM extends WC_Payment_Gateway {
       'sslverify' => false,
     ) );
     if ( is_wp_error( $response ) ) 
-      throw new Exception( __( 'There is issue for connectin payment gateway. Sorry for the inconvenience.', 'cwoa-authorizenet-aim' ) );
+      throw new Exception( __( 'There is issue for connectin payment gateway. Sorry for the inconvenience.', 'edge_pay-authorizenet-aim' ) );
     if ( empty( $response['body'] ) )
-      throw new Exception( __( 'Authorize.net\'s Response was not get any data.', 'cwoa-authorizenet-aim' ) );
+      throw new Exception( __( 'Authorize.net\'s Response was not get any data.', 'edge_pay-authorizenet-aim' ) );
       
     // get body response while get not error
     $response_body = wp_remote_retrieve_body( $response );
@@ -189,7 +189,7 @@ class cwoa_AuthorizeNet_AIM extends WC_Payment_Gateway {
     // 1 or 4 means the transaction was a success
     if ( ( $r['response_code'] == 1 ) || ( $r['response_code'] == 4 ) ) {
       // Payment successful
-      $customer_order->add_order_note( __( 'Authorize.net complete payment.', 'cwoa-authorizenet-aim' ) );
+      $customer_order->add_order_note( __( 'Authorize.net complete payment.', 'edge_pay-authorizenet-aim' ) );
                          
       // paid order marked
       $customer_order->payment_complete();
